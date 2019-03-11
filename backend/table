@@ -1,0 +1,9 @@
+Database name:
+	"anglogin"
+Tables:
+	"users"
+		fields:
+			username,
+			email,
+			password,
+			date
