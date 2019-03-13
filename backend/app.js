@@ -9,14 +9,14 @@ const app = express()
 
 /*cros origin allow*/
 app.use(function(req,res,next){
-	req.header('Access-Control-Allow-Origin',config.accessControlAllowOrigin)
-	req.header('Access-Control-Allow-Headers',config.accessControlAllowHeaders)
-	req.header('Access-Control-Allow-Methods',config.accessControlAllowMethods)
+	res.header('Access-Control-Allow-Origin',config.accessControlAllowOrigin);
+	res.header('Access-Control-Allow-Headers',config.accessControlAllowHeaders);
+	res.header('Access-Control-Allow-Methods',config.accessControlAllowMethods);
 	next();
-})
+});
 
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded({extended:true}))
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended:true}));
 
 function checkusername(username){
 	return new Promise((resolve,reject) => {
@@ -222,7 +222,8 @@ app.post("/api/login",(req,res) => {
 							if(verify == true){
 								res.send({
 									"status":true,
-									"message":"Login successful"
+									"message":"Login successful",
+									"data":username
 								})
 							}else{
 								res.send({
